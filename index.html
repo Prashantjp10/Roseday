@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta
+         name="viewport"
+         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+      />
+      <title>intha di unaku tha</title>
+
+      <link
+         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;600;700&display=swap"
+         rel="stylesheet"
+      />
+
+      <style>
+         :root {
+            --pink-main: #ff3366;
+            --pink-dark: #d6334d;
+            --bg-gradient: linear-gradient(180deg, #ff5f6d 0%, #ffc3a0 100%);
+         }
+
+         /* Reset */
+         * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+         }
+
+         html,
+         body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: "Nunito", sans-serif;
+         }
+
+         /* Background */
+         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--bg-gradient);
+            position: fixed;
+         }
+
+         /* Card */
+         .card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 32px 22px;
+            border-radius: 32px;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            z-index: 5;
+         }
+
+         /* Titles */
+         h1 {
+            font-family: "Dancing Script", cursive;
+            color: var(--pink-dark);
+            font-size: 2.4rem;
+            margin: 0 0 8px;
+         }
+
+         p {
+            margin: 6px 0;
+            color: #555;
+            font-weight: 600;
+         }
+
+         /* Rose */
+         .rose {
+            font-size: 80px;
+            margin: 12px 0;
+            animation: breathe 2.8s ease-in-out infinite;
+            filter: drop-shadow(0 12px 18px rgba(255, 51, 102, 0.45));
+         }
+
+         @keyframes breathe {
+            0%,
+            100% {
+               transform: scale(1);
+            }
+            50% {
+               transform: scale(1.15);
+            }
+         }
+
+         /* Button */
+         button {
+            appearance: none;
+            border: none;
+            width: 100%;
+            max-width: 230px;
+            margin-top: 18px;
+            padding: 18px;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            background: var(--pink-main);
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 51, 102, 0.55);
+            transition:
+               transform 0.15s ease,
+               box-shadow 0.15s ease;
+         }
+
+         button:active {
+            transform: scale(0.97);
+            box-shadow: 0 6px 18px rgba(255, 51, 102, 0.45);
+         }
+
+         /* Hidden content */
+         .hidden {
+            display: none;
+            opacity: 0;
+         }
+
+         /* Letter */
+         .letter {
+            background: #fff5f7;
+            padding: 22px;
+            border-radius: 22px;
+            border: 2px dashed #ffb3c1;
+            margin-top: 10px;
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #444;
+            text-align: left;
+            box-shadow: inset 0 0 12px rgba(255, 179, 193, 0.25);
+         }
+
+         .greeting {
+            display: block;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--pink-dark);
+            margin-bottom: 6px;
+         }
+
+         .signature {
+            text-align: right;
+            margin-top: 14px;
+            font-style: italic;
+            color: var(--pink-dark);
+         }
+
+         /* Final message */
+         .final {
+            font-family: "Dancing Script", cursive;
+            font-size: 2.5rem;
+            color: var(--pink-dark);
+            margin-top: 22px;
+         }
+
+         /* Fade in */
+         .show {
+            display: block;
+            animation: fadeUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+         }
+
+         @keyframes fadeUp {
+            from {
+               opacity: 0;
+               transform: translateY(40px);
+            }
+            to {
+               opacity: 1;
+               transform: translateY(0);
+            }
+         }
+
+         /* Hearts */
+         .heart {
+            position: absolute;
+            bottom: -40px;
+            width: 16px;
+            height: 16px;
+            transform: rotate(-45deg);
+            pointer-events: none;
+            animation: float linear forwards;
+         }
+
+         .heart::before,
+         .heart::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: 50%;
+         }
+
+         .heart::before {
+            top: -50%;
+         }
+         .heart::after {
+            left: -50%;
+         }
+
+         @keyframes float {
+            from {
+               transform: translateY(0) rotate(-45deg) scale(0.4);
+               opacity: 0;
+            }
+            10% {
+               opacity: 1;
+            }
+            to {
+               transform: translateY(-120vh) rotate(-45deg) scale(1.3);
+               opacity: 0;
+            }
+         }
+      </style>
+   </head>
+
+   <body>
+      <div class="card">
+         <div id="start">
+            <h1>For My Ammu</h1>
+            <div class="rose">🌹</div>
+            <p>I have a message for you di…</p>
+            <button onclick="openLetter()">Tap to Open ❤️</button>
+         </div>
+
+         <div id="letter" class="hidden">
+            <div class="rose">🌹</div>
+
+            <div class="letter">
+               <span class="greeting"
+                  >Dearest <span id="herName">Kaviya</span>,</span
+               >
+
+               Every time I see you, I’m reminded of how lucky I am. You’re more
+               beautiful than any rose, and your kindness is the fragrance that
+               makes my life bloom.
+
+               <br /><br />
+               Epovum Happy ah irukanum.Nalla saptu Bosu Bosu nu irukkanum.
+               cherry cherry lady 🍒
+
+               <div class="signature">
+                  — Yours, <span id="yourName">Ammupah</span>
+               </div>
+            </div>
+
+            <div class="final">Happy Rose Day 🌹</div>
+         </div>
+      </div>
+
+      <script>
+         const COLORS = ["#ff3366", "#ff0040", "#ff85a1", "#ff4d6d"];
+         let heartTimer = null;
+
+         function openLetter() {
+            document.getElementById("start").style.display = "none";
+            const letter = document.getElementById("letter");
+            letter.classList.add("show");
+
+            // Controlled heart generation (no memory leak)
+            heartTimer = setInterval(createHeart, 220);
+
+            // Stop after 6 seconds (premium feel)
+            setTimeout(() => clearInterval(heartTimer), 1000000);
+         }
+
+         function createHeart() {
+            const h = document.createElement("div");
+            h.className = "heart";
+            const size = Math.random() * 14 + 12;
+            h.style.width = h.style.height = size + "px";
+            h.style.left = Math.random() * 100 + "vw";
+            h.style.background =
+               COLORS[Math.floor(Math.random() * COLORS.length)];
+            h.style.animationDuration = Math.random() * 1.5 + 2.5 + "s";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 4000);
+         }
+      </script>
+   </body>
+</html>
